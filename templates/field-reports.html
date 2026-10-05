@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{%- block content %}
+<header class="dw-hero dw-report-index-hero">
+    <div class="dw-shell">
+        <p class="dw-kicker"><span>Archive</span><span>Fiction</span></p>
+        <h1 class="dw-hero__title">{{ section.title }}</h1>
+        {%- if section.description %}<p class="dw-hero__summary">{{ section.description }}</p>{% endif %}
+    </div>
+</header>
+<div class="dw-shell">
+    <div class="dw-report-index__intro dw-prose">{{ section.content | safe }}</div>
+    <ol class="dw-report-list">
+    {%- for report in section.pages %}
+        <li>
+            <a class="dw-report-list__link" href="{{ report.permalink | safe }}">
+                <div class="dw-report-list__record">{% if report.extra.marked | default(value=false) %}<span class="dw-record-mark" aria-hidden="true"></span>{% endif %}{{ report.extra.record | default(value="Field report") }}</div>
+                <div class="dw-report-list__copy">
+                    <h2>{{ report.title }}</h2>
+                    <p>{{ report.description }}</p>
+                </div>
+                <div class="dw-report-list__meta">
+                    <span>{{ report.extra.engagement | default(value="Engagement") }}</span>
+                    <span>Fiction</span>
+                </div>
+            </a>
+        </li>
+    {%- endfor %}
+    </ol>
+</div>
+{%- endblock content %}

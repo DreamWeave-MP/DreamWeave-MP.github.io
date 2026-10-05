@@ -133,11 +133,9 @@
     <div class="dw-shell dw-footer__inner">
         <p class="dw-footer__about"><span class="dw-brand__mark" aria-hidden="true"></span>{% if config.extra.footer_text %}{{ config.extra.footer_text }}{% else %}{{ config.title }}{% endif %}</p>
         <nav class="dw-footer__links" aria-label="Footer">
-            {%- if not dw_offline %}
-            <a href="{{ get_url(path='dreamweave.json', trailing_slash=false) | safe }}">dreamweave.json</a>
-            {%- endif %}
+            <a href="{{ get_url(path='field-reports') | safe }}">Field Reports</a>
+            <a href="{{ get_url(path='contact') | safe }}">Contact</a>
             <a href="https://github.com/{{ config.extra.github_username }}/{{ config.extra.github_project }}">Source</a>
-            <a href="https://github.com/DreamWeave-MP/DreamWeave-Mod-Template">Built with the DreamWeave Mod Template</a>
             <a href="http://www.catb.org/hacker-emblem/" title="Hacker emblem"><img class="dw-footer__emblem" src="{{ get_url(path='img/glider.svg', trailing_slash=false) | safe }}" alt="Hacker emblem"></a>
         </nav>
     </div>

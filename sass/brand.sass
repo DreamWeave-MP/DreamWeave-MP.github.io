@@ -1,10 +1,603 @@
-// Your branding. This file is yours: the template never changes it, and it loads last.
-//
-// Recolor everything by overriding tokens, for example:
-//
-// :root
-//   --dw-accent: #7fded0
-//   --dw-font-display: "Oxanium", var(--dw-font-mono)
-//
-// Token names are in sass/_tokens.sass. Prefer tokens over new selectors: they keep the
-// template's components, docs and diagrams consistent with each other.
+// DreamWeave consultancy site. SWR3's blue-black restraint, pulled back toward DreamWeave violet.
+// Green is deliberately rare: it is a record mark, not a second brand colour.
+
+[data-palette="purple"]
+  --dw-accent: #b58cff
+  --dw-accent-hover: #c9adff
+  --dw-bg-0: #07090e
+  --dw-bg-1: #0b0e15
+  --dw-bg-2: #111620
+  --dw-bg-3: #181e29
+  --dw-line: #222a38
+  --dw-line-strong: #374357
+  --dw-text: #ecebf2
+  --dw-text-muted: #b7b5c2
+  --dw-text-faint: #858392
+  --dw-code-bg: #0a0d13
+  --dw-code-inline-bg: #151a24
+
+:root
+  --dw-jok3r: #8bd67f
+  --dw-company-violet: #7658d8
+
+::selection
+  background: color-mix(in oklab, var(--dw-accent) 34%, transparent)
+
+body
+  background: radial-gradient(ellipse 65% 42rem at 75% -12rem, color-mix(in oklab, var(--dw-accent) 8%, transparent), transparent 72%), var(--dw-bg-0)
+
+.dw-header
+  border-bottom-color: transparent
+  background-color: color-mix(in oklab, var(--dw-bg-1) 94%, transparent)
+  background-image: linear-gradient(90deg, transparent, color-mix(in oklab, var(--dw-accent) 42%, transparent) 30%, color-mix(in oklab, var(--dw-accent) 42%, transparent) 70%, transparent)
+  background-size: 100% 1px
+  background-position: bottom
+  background-repeat: no-repeat
+  backdrop-filter: blur(16px)
+
+  &::before
+    height: 1px
+    background: linear-gradient(90deg, color-mix(in oklab, var(--dw-accent) 72%, white), var(--dw-accent) 24%, transparent 74%)
+
+.dw-brand
+  letter-spacing: .015em
+  text-transform: uppercase
+
+.dw-brand__mark
+  border-radius: 0
+  box-shadow: 0 0 16px color-mix(in oklab, var(--dw-accent) 38%, transparent)
+
+.dw-nav
+  font-size: .78rem
+  letter-spacing: .045em
+  text-transform: uppercase
+
+.dw-footer
+  background: #080b10
+
+.dw-hero
+  overflow: hidden
+  background: radial-gradient(ellipse 58% 100% at 82% 0%, color-mix(in oklab, var(--dw-accent) 12%, transparent), transparent 72%), radial-gradient(ellipse 42% 80% at 5% 115%, color-mix(in oklab, var(--dw-company-violet) 7%, transparent), transparent 72%), linear-gradient(180deg, var(--dw-bg-1), var(--dw-bg-0))
+
+.dw-hero__title
+  background: linear-gradient(100deg, var(--dw-text) 30%, var(--dw-accent) 95%)
+  background-clip: text
+  -webkit-background-clip: text
+  color: transparent
+  letter-spacing: -.02em
+
+  @media (forced-colors: active)
+    background: none
+    color: CanvasText
+
+.dw-company-hero
+  position: relative
+  isolation: isolate
+  overflow: hidden
+  margin-top: calc(-1 * var(--dw-space-6))
+  border-bottom: 1px solid var(--dw-line)
+  padding: clamp(4rem, 8vw, 8rem) 0 clamp(3.5rem, 7vw, 7rem)
+  background: radial-gradient(ellipse 58% 90% at 78% 32%, color-mix(in oklab, var(--dw-accent) 15%, transparent), transparent 70%), radial-gradient(ellipse 42% 70% at 12% 115%, color-mix(in oklab, var(--dw-company-violet) 9%, transparent), transparent 72%), linear-gradient(180deg, #0a0d14, var(--dw-bg-0))
+
+  &::before
+    content: ""
+    position: absolute
+    inset: 0
+    z-index: -1
+    background-image: linear-gradient(color-mix(in oklab, var(--dw-text) 3.5%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--dw-text) 3.5%, transparent) 1px, transparent 1px)
+    background-size: 52px 52px
+    mask-image: linear-gradient(90deg, #000 0%, rgb(0 0 0 / 55%) 54%, transparent 88%)
+
+  &::after
+    content: ""
+    position: absolute
+    z-index: -1
+    top: 10%
+    right: -11rem
+    width: 34rem
+    height: 34rem
+    border: 1px solid color-mix(in oklab, var(--dw-accent) 16%, transparent)
+    transform: rotate(45deg)
+    box-shadow: 0 0 90px color-mix(in oklab, var(--dw-accent) 7%, transparent), inset 0 0 70px color-mix(in oklab, var(--dw-accent) 4%, transparent)
+    opacity: .7
+
+.dw-company-hero__grid
+  display: grid
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, .75fr)
+  gap: clamp(3rem, 7vw, 7rem)
+  align-items: center
+
+.dw-company-hero__copy
+  max-width: 58rem
+
+.dw-company-hero__title
+  max-width: 13ch
+  margin: 0 0 var(--dw-space-4)
+  background: linear-gradient(102deg, #fff 10%, var(--dw-text) 42%, var(--dw-accent) 96%)
+  background-clip: text
+  -webkit-background-clip: text
+  color: transparent
+  font-family: var(--dw-font-display)
+  font-size: clamp(3.2rem, 2rem + 5.2vw, 7.4rem)
+  font-weight: 700
+  letter-spacing: -.055em
+  line-height: .94
+  text-wrap: balance
+
+  @media (forced-colors: active)
+    background: none
+    color: CanvasText
+
+.dw-company-hero__summary
+  max-width: 62ch
+  margin: 0 0 var(--dw-space-5)
+  color: var(--dw-text-muted)
+  font-size: clamp(1.05rem, .95rem + .35vw, 1.32rem)
+  line-height: 1.65
+
+.dw-company-signal
+  position: relative
+  border: 1px solid var(--dw-line-strong)
+  border-radius: var(--dw-radius-lg)
+  padding: clamp(1.25rem, 3vw, 2rem)
+  background: linear-gradient(145deg, color-mix(in oklab, var(--dw-bg-2) 92%, transparent), color-mix(in oklab, var(--dw-bg-1) 82%, transparent))
+  box-shadow: var(--dw-shadow-3), inset 0 1px 0 color-mix(in oklab, white 5%, transparent)
+
+  &::before
+    content: ""
+    position: absolute
+    inset: 0 auto 0 0
+    width: 2px
+    background: linear-gradient(transparent, var(--dw-accent) 26%, var(--dw-accent) 74%, transparent)
+    opacity: .65
+
+  dl
+    margin: 0
+
+  dl > div
+    display: grid
+    grid-template-columns: minmax(0, 1fr) auto
+    gap: 1.5rem
+    border-top: 1px solid var(--dw-line)
+    padding: .9rem 0
+
+  dt, dd
+    margin: 0
+
+  dt
+    color: var(--dw-text-muted)
+
+  dd
+    color: var(--dw-text)
+    font-family: var(--dw-font-mono)
+    font-size: var(--dw-step--1)
+    letter-spacing: .05em
+    text-transform: uppercase
+
+.dw-company-signal__label,
+.dw-company-signal__foot
+  margin: 0
+  color: var(--dw-text-faint)
+  font-family: var(--dw-font-mono)
+  font-size: var(--dw-step--2)
+  letter-spacing: .12em
+  text-transform: uppercase
+
+.dw-company-signal__label
+  padding-bottom: .9rem
+
+.dw-company-signal__foot
+  display: flex
+  gap: .6em
+  align-items: center
+  border-top: 1px solid var(--dw-line)
+  padding-top: 1rem
+
+.dw-record-mark
+  display: inline-block
+  flex: none
+  width: .54em
+  height: .54em
+  border-radius: 50%
+  background: var(--dw-jok3r)
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--dw-jok3r) 10%, transparent), 0 0 12px color-mix(in oklab, var(--dw-jok3r) 35%, transparent)
+  vertical-align: .06em
+
+.dw-company-section
+  border-bottom: 1px solid var(--dw-line)
+  padding: clamp(4rem, 6vw, 6.5rem) 0
+
+.dw-company-section--engineering
+  background: linear-gradient(180deg, color-mix(in oklab, var(--dw-bg-1) 60%, transparent), transparent)
+
+.dw-company-section--reports
+  background: radial-gradient(ellipse 55% 90% at 100% 50%, color-mix(in oklab, var(--dw-accent) 6%, transparent), transparent 75%)
+
+.dw-company-section__head
+  display: grid
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr)
+  gap: 2rem clamp(3rem, 7vw, 8rem)
+  align-items: end
+  margin-bottom: clamp(2rem, 4vw, 3.5rem)
+
+  h2
+    max-width: 16ch
+    margin: 0
+    font-size: clamp(2rem, 1.4rem + 2.3vw, 4rem)
+    letter-spacing: -.035em
+    line-height: 1.03
+    text-wrap: balance
+
+  > p
+    max-width: 56ch
+    margin: 0
+    color: var(--dw-text-muted)
+    line-height: 1.65
+
+.dw-capability-grid
+  display: grid
+  grid-template-columns: repeat(4, minmax(0, 1fr))
+  border-block: 1px solid var(--dw-line)
+
+.dw-capability
+  position: relative
+  min-height: 19rem
+  padding: 1.6rem clamp(1.2rem, 2vw, 2rem)
+
+  & + &
+    border-left: 1px solid var(--dw-line)
+
+  h3
+    margin: 3rem 0 .8rem
+    font-size: clamp(1.2rem, 1rem + .6vw, 1.65rem)
+    line-height: 1.15
+
+  > p:last-child
+    margin: 0
+    color: var(--dw-text-muted)
+    line-height: 1.65
+
+.dw-capability__index
+  margin: 0
+  color: var(--dw-accent)
+  font-family: var(--dw-font-mono)
+  font-size: var(--dw-step--2)
+  letter-spacing: .14em
+
+.dw-engineering-grid
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: var(--dw-space-3)
+
+.dw-engineering-card
+  border: 1px solid var(--dw-line)
+  border-radius: var(--dw-radius-lg)
+  padding: clamp(1.4rem, 2.5vw, 2rem)
+  background: linear-gradient(145deg, var(--dw-bg-1), color-mix(in oklab, var(--dw-bg-2) 62%, var(--dw-bg-1)))
+  transition: border-color var(--dw-duration) var(--dw-ease), transform var(--dw-duration) var(--dw-ease)
+
+  &:hover
+    border-color: var(--dw-accent-line)
+    transform: translateY(-2px)
+
+  h3
+    margin: .15rem 0 .65rem
+    font-size: clamp(1.55rem, 1.25rem + 1vw, 2.25rem)
+
+  > p:last-child
+    max-width: 55ch
+    margin: 0
+    color: var(--dw-text-muted)
+    line-height: 1.6
+
+.dw-engineering-card__type
+  margin: 0
+  color: var(--dw-accent)
+  font-family: var(--dw-font-mono)
+  font-size: var(--dw-step--2)
+  letter-spacing: .13em
+  text-transform: uppercase
+
+.dw-company-section__action
+  margin: var(--dw-space-4) 0 0
+  font-family: var(--dw-font-mono)
+  font-size: var(--dw-step--1)
+
+  a
+    text-decoration: none
+
+.dw-report-grid
+  display: grid
+  grid-template-columns: repeat(3, minmax(0, 1fr))
+  gap: var(--dw-space-3)
+  margin: 0
+  padding: 0
+  list-style: none
+
+  > li
+    margin: 0
+
+.dw-report-card
+  display: flex
+  height: 100%
+  flex-direction: column
+  border: 1px solid var(--dw-line)
+  border-radius: var(--dw-radius-lg)
+  padding: clamp(1.3rem, 2.5vw, 1.85rem)
+  background: color-mix(in oklab, var(--dw-bg-1) 88%, transparent)
+  color: inherit
+  text-decoration: none
+  transition: border-color var(--dw-duration) var(--dw-ease), background var(--dw-duration) var(--dw-ease), transform var(--dw-duration) var(--dw-ease)
+
+  &:hover
+    border-color: var(--dw-accent-line)
+    background: var(--dw-bg-2)
+    transform: translateY(-2px)
+
+  h3
+    margin: 1.5rem 0 .65rem
+    font-size: clamp(1.25rem, 1rem + .8vw, 1.75rem)
+    line-height: 1.15
+
+  > p
+    margin: 0 0 2rem
+    color: var(--dw-text-muted)
+    line-height: 1.6
+
+.dw-report-card__top
+  display: flex
+  gap: .8rem
+  align-items: center
+  justify-content: space-between
+
+.dw-report-card__record
+  display: inline-flex
+  gap: .55em
+  align-items: center
+  color: var(--dw-text-faint)
+  font-family: var(--dw-font-mono)
+  font-size: var(--dw-step--2)
+  letter-spacing: .12em
+  text-transform: uppercase
+
+.dw-report-card__read
+  margin-top: auto
+  color: var(--dw-accent)
+  font-family: var(--dw-font-mono)
+  font-size: var(--dw-step--1)
+
+.dw-company-cta
+  padding: clamp(4rem, 8vw, 7rem) 0
+  background: radial-gradient(ellipse 70% 130% at 5% 120%, color-mix(in oklab, var(--dw-accent) 10%, transparent), transparent 68%), var(--dw-bg-1)
+
+.dw-company-cta__inner
+  display: flex
+  gap: 2rem 4rem
+  align-items: center
+  justify-content: space-between
+
+  h2
+    max-width: 20ch
+    margin: 0 0 .7rem
+    font-size: clamp(2rem, 1.4rem + 2.2vw, 3.7rem)
+    letter-spacing: -.035em
+    line-height: 1.05
+
+  p:last-child
+    margin: 0
+    color: var(--dw-text-muted)
+
+.dw-report-index-hero
+  background: radial-gradient(ellipse 55% 100% at 82% 0%, color-mix(in oklab, var(--dw-accent) 13%, transparent), transparent 72%), linear-gradient(180deg, var(--dw-bg-1), var(--dw-bg-0))
+
+.dw-report-index__intro
+  margin-bottom: var(--dw-space-6)
+
+.dw-report-list
+  margin: 0
+  padding: 0
+  list-style: none
+
+  > li
+    margin: 0
+    border-top: 1px solid var(--dw-line)
+
+  > li:last-child
+    border-bottom: 1px solid var(--dw-line)
+
+.dw-report-list__link
+  display: grid
+  grid-template-columns: 8rem minmax(0, 1fr) minmax(9rem, auto)
+  gap: 1.5rem 2.5rem
+  align-items: start
+  padding: 1.6rem .2rem
+  color: inherit
+  text-decoration: none
+  transition: background var(--dw-duration) var(--dw-ease), padding var(--dw-duration) var(--dw-ease)
+
+  &:hover
+    margin-inline: -.9rem
+    padding-inline: 1.1rem
+    background: color-mix(in oklab, var(--dw-accent) 4%, transparent)
+
+.dw-report-list__record
+  display: flex
+  gap: .55em
+  align-items: center
+  padding-top: .3rem
+  color: var(--dw-text-faint)
+  font-family: var(--dw-font-mono)
+  font-size: var(--dw-step--2)
+  letter-spacing: .12em
+  text-transform: uppercase
+
+.dw-report-list__copy
+  h2
+    margin: 0 0 .35rem
+    font-size: var(--dw-step-2)
+
+  p
+    max-width: 60ch
+    margin: 0
+    color: var(--dw-text-muted)
+    line-height: 1.55
+
+.dw-report-list__meta
+  display: flex
+  flex-direction: column
+  gap: .2rem
+  align-items: flex-end
+  color: var(--dw-text-faint)
+  font-family: var(--dw-font-mono)
+  font-size: var(--dw-step--2)
+  letter-spacing: .08em
+  text-align: right
+  text-transform: uppercase
+
+.dw-report-hero
+  margin-top: calc(-1 * var(--dw-space-6))
+  border-bottom: 1px solid var(--dw-line)
+  padding: clamp(3rem, 6vw, 6rem) 0 clamp(2.5rem, 5vw, 4.5rem)
+  background: radial-gradient(ellipse 55% 110% at 84% 0%, color-mix(in oklab, var(--dw-accent) 12%, transparent), transparent 72%), linear-gradient(180deg, var(--dw-bg-1), var(--dw-bg-0))
+
+  h1
+    max-width: 18ch
+    margin: 0 0 1rem
+    background: linear-gradient(100deg, var(--dw-text) 35%, var(--dw-accent) 100%)
+    background-clip: text
+    -webkit-background-clip: text
+    color: transparent
+    font-size: clamp(2.6rem, 1.8rem + 3.6vw, 5.7rem)
+    letter-spacing: -.045em
+    line-height: .98
+    text-wrap: balance
+
+.dw-report-hero__summary
+  max-width: 62ch
+  margin: 0 0 2rem
+  color: var(--dw-text-muted)
+  font-size: var(--dw-step-1)
+  line-height: 1.6
+
+.dw-report-facts
+  display: flex
+  flex-wrap: wrap
+  gap: .45rem 1.8rem
+  margin: 0
+  border-top: 1px solid var(--dw-line)
+  padding-top: 1.2rem
+
+  > div
+    display: flex
+    gap: .55rem
+    align-items: baseline
+
+  dt, dd
+    margin: 0
+    font-family: var(--dw-font-mono)
+    font-size: var(--dw-step--2)
+
+  dt
+    color: var(--dw-text-faint)
+    letter-spacing: .08em
+    text-transform: uppercase
+
+  dd
+    color: var(--dw-text-muted)
+
+.dw-report-article
+  padding-top: var(--dw-space-2)
+
+.dw-fiction-note
+  max-width: var(--dw-width-prose)
+  margin-bottom: var(--dw-space-6)
+  border-left: 2px solid var(--dw-accent)
+  padding: .85rem 1rem
+  background: linear-gradient(90deg, color-mix(in oklab, var(--dw-accent) 8%, transparent), transparent)
+  color: var(--dw-text-muted)
+  font-size: var(--dw-step--1)
+  line-height: 1.55
+
+  strong
+    color: var(--dw-text)
+
+.dw-report-article blockquote
+  max-width: var(--dw-width-prose)
+  margin: 1.7rem 0
+  border-left: 2px solid var(--dw-line-strong)
+  padding: .15rem 0 .15rem 1.2rem
+  color: var(--dw-text)
+  font-size: 1.08em
+
+.dw-report-footer
+  display: flex
+  flex-wrap: wrap
+  gap: 1rem 2rem
+  align-items: center
+  justify-content: space-between
+  margin-top: var(--dw-space-7)
+  border-top: 1px solid var(--dw-line)
+  padding-top: var(--dw-space-4)
+  font-family: var(--dw-font-mono)
+  font-size: var(--dw-step--1)
+
+  > a
+    text-decoration: none
+
+@media (max-width: 1000px)
+  .dw-company-hero__grid,
+  .dw-company-section__head
+    grid-template-columns: 1fr
+
+  .dw-company-signal
+    max-width: 42rem
+
+  .dw-capability-grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+
+  .dw-capability
+    min-height: 16rem
+    border-bottom: 1px solid var(--dw-line)
+
+    &:nth-child(3)
+      border-left: 0
+
+    &:nth-last-child(-n + 2)
+      border-bottom: 0
+
+  .dw-report-grid
+    grid-template-columns: 1fr
+
+@media (max-width: 760px)
+  .dw-company-hero::after
+    right: -22rem
+    opacity: .45
+
+  .dw-company-hero__title
+    font-size: clamp(2.7rem, 16vw, 4.4rem)
+
+  .dw-capability-grid,
+  .dw-engineering-grid
+    grid-template-columns: 1fr
+
+  .dw-capability
+    min-height: auto
+    border-bottom: 1px solid var(--dw-line)
+
+    & + &
+      border-left: 0
+
+    &:nth-last-child(2)
+      border-bottom: 1px solid var(--dw-line)
+
+  .dw-company-cta__inner
+    align-items: flex-start
+    flex-direction: column
+
+  .dw-report-list__link
+    grid-template-columns: 1fr
+    gap: .65rem
+
+  .dw-report-list__meta
+    align-items: flex-start
+    text-align: left

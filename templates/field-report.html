@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{%- block content %}
+<header class="dw-report-hero">
+    <div class="dw-shell">
+        <p class="dw-kicker"><span>{% if page.extra.marked | default(value=false) %}<span class="dw-record-mark" aria-hidden="true"></span>{% endif %}{{ page.extra.record | default(value="Field report") }}</span><span>Fiction</span></p>
+        <h1>{{ page.title }}</h1>
+        {%- if page.description %}<p class="dw-report-hero__summary">{{ page.description }}</p>{% endif %}
+        <dl class="dw-report-facts">
+            {%- if page.extra.engagement is defined %}<div><dt>Engagement</dt><dd>{{ page.extra.engagement }}</dd></div>{% endif %}
+            {%- if page.extra.client is defined %}<div><dt>Client</dt><dd>{{ page.extra.client }}</dd></div>{% endif %}
+            {%- if page.extra.duration is defined %}<div><dt>Duration</dt><dd>{{ page.extra.duration }}</dd></div>{% endif %}
+            {%- if page.extra.disposition is defined %}<div><dt>Disposition</dt><dd>{{ page.extra.disposition }}</dd></div>{% endif %}
+            {%- if page.extra.downtime is defined %}<div><dt>Downtime</dt><dd>{{ page.extra.downtime }}</dd></div>{% endif %}
+        </dl>
+    </div>
+</header>
+<div class="dw-shell">
+    <article class="dw-article dw-report-article">
+        <p class="dw-fiction-note"><strong>Fictional engagement record.</strong> The client and engagement are fictional. The engineering failure modes may be drawn from recognizable real-world patterns.</p>
+        <div class="dw-prose">{{ page.content | safe }}</div>
+        <footer class="dw-report-footer">
+            <span>{{ page.extra.record | default(value="Field report") }}</span>
+            <a href="{{ get_url(path='field-reports') | safe }}">← Field Reports</a>
+        </footer>
+    </article>
+</div>
+{%- endblock content %}
